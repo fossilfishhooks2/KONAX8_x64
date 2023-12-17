@@ -1,0 +1,31 @@
+KONAX8 Emulator help section
+KONAX8 emulator is designed to assist in making and debugging assembly scripts. It uses a slightly modified assembly language with the file extension .kas.
+KAS scripts allow only very general CPU actions. Display is assisted with the 'disp' function.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+KAS functions (# is any number):
+mov ####,a####  (move number to memory at specified location)
+mov a####,a#### (move contents of first memory address to second address)
+mov ####,m#### (move number to memory location described in specified location)
+mov a####,m#### (move contents of first memory loaction to the memory location described in second specified address)
+mov m####,m#### (move contents of memory address described in first address to the memory location described in second specified address; For clarifiaction: the code behind this is similar to 'EVRAM[EVRAM[num2]] = EVRAM[EVRAM[num1]]')
+mov m####,a#### (move contents of memory address described in first address to the memory location specified in a####; For clarifiaction: the code behind this is similar to 'EVRAM[num2] = EVRAM[EVRAM[num1]]')
+add a####,a#### (add the two contents of these locations and store in the second one)
+sub a####,a#### (self-explanatory. Sorry we dont support m#### pointers yet)
+mul a####,a#### (self-explanatory)
+div a####,a#### (self-explanatory)
+and a####,a#### (bitwise and; store result in second address)
+or a####,a#### (self-explanatory)
+xor a####,a#### (self-explanatory)
+not a#### (bitwise not)
+sl a####,a#### (shift left first address by amount in second address)
+sr a####,a#### (shift right first address by amount in second address)
+jmp #### (jump to line number)
+jmp a#### (jump to line number described in specified address)
+cmp a####,a#### (compare the two addresses. On start, the emulator will say where compare values are being stored. It is typically byte 0 of RAM)
+je a#### (jump if last compare was equal)
+jne a#### (not equal)
+jl,jle,jg,jge (less than; less than or equal to; greater than; greater than or equal to)
+disp a#### (display the contents of specified address on screen)
+in a#### (take one character input from user and store it in address)
+cls s  (clear output screen)
+hlt a#### (halt program with return code specified in given address. Emulator may exit immediately afterwards)
